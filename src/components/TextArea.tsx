@@ -7,7 +7,7 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> { }
 const TextArea: FC<TextAreaProps> = ({ className, ...props }) => {
     return (
         <textarea
-            className={cn("w-full text-white bg-gray-400 p-1", className)}
+            className={cn("w-full text-white bg-gray-400 p-1 rounded", className)}
             {...props}
         />
     )

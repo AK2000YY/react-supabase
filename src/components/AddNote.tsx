@@ -21,8 +21,7 @@ const AddNote = () => {
             .insert([
                 {
                     title,
-                    content,
-                    user_id: "af545f36-4f28-46f1-9f83-6b752533238e"
+                    content
                 },
             ])
         setShowModal(false);
