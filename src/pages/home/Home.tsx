@@ -28,7 +28,7 @@ const Home = () => {
             .on(
                 'postgres_changes',
                 { event: '*', schema: 'public', table: 'notes' },
-                ({ eventType, new: newData }) => {
+                ({ eventType, old, new: newData }) => {
                     switch (eventType) {
                         case "INSERT": {
                             const note: Note = newData as Note
@@ -41,7 +41,7 @@ const Home = () => {
                             break;
                         }
                         case "DELETE": {
-                            const note: Note = newData as Note
+                            const note: Note = old as Note
                             setNotes(prev => prev.filter(ele => ele.id !== note.id))
                             break;
                         }
@@ -63,7 +63,7 @@ const Home = () => {
         >
             <Nav />
             <div
-                className="w-screen p-2 grid grid-cols-2 sm:grid-cols-3 row gap-1 justify-between overflow-y-auto"
+                className="w-screen p-2 grid grid-cols-2 sm:grid-cols-3 gap-1 justify-between overflow-y-auto"
             >
                 {notes.map(ele =>
                     <NoteCard
